@@ -1,5 +1,6 @@
 package com.nomad.confidant.items;
 
+import com.mojang.logging.LogUtils;
 import com.nomad.confidant.util.InputHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -18,11 +19,13 @@ import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
+import org.slf4j.Logger;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
 public class TeleportStaff extends Item {
+    private static final Logger LOGGER = LogUtils.getLogger();
     public TeleportStaff(Properties properties) {
         super(properties);
     }
@@ -30,7 +33,7 @@ public class TeleportStaff extends Item {
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         BlockHitResult ray = rayTrace(world, player, ClipContext.Fluid.NONE);
         BlockPos lookPos = ray.getBlockPos().relative(ray.getDirection());
-        player.setDeltaMovement(lookPos.getX(),lookPos.getY(),lookPos.getZ());
+        player.setDeltaMovement(lookPos.getX()-player.getX(),0,lookPos.getZ()-player.getZ());
         player.getCooldowns().addCooldown(this, 20);
         world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1.0F, 1.0F);
         ItemStack stack = player.getItemInHand(hand);
@@ -55,7 +58,7 @@ public class TeleportStaff extends Item {
         float f5 = Mth.sin(-f * ((float)Math.PI / 180F));
         float f6 = f3 * f4;
         float f7 = f2 * f4;
-        double d0 = 0.1;
+        double d0 = p_41437_.getAttribute(net.minecraftforge.common.ForgeMod.REACH_DISTANCE.get()).getValue();;
         Vec3 vec31 = vec3.add((double)f6 * d0, (double)f5 * d0, (double)f7 * d0);
         return p_41436_.clip(new ClipContext(vec3, vec31, ClipContext.Block.OUTLINE, p_41438_, p_41437_));
     }
