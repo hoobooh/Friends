@@ -1,4 +1,4 @@
-package com.nomad.confidant.iteminit;
+package com.nomad.confidant.init;
 
 import com.nomad.confidant.Confidant;
 import net.minecraft.world.level.block.Block;

@@ -1,4 +1,4 @@
-package com.nomad.confidant.iteminit;
+package com.nomad.confidant.init;
 import com.nomad.confidant.Confidant;
 import com.nomad.confidant.items.EffectStaff;
 import com.nomad.confidant.items.FuelItem;

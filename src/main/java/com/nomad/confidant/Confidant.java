@@ -1,7 +1,7 @@
 package com.nomad.confidant;
 
 import com.mojang.logging.LogUtils;
-import com.nomad.confidant.iteminit.ItemInit;
+import com.nomad.confidant.init.ItemInit;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
