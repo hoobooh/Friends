@@ -1,7 +1,8 @@
 package com.nomad.confidant;
 
 import com.mojang.logging.LogUtils;
-import com.nomad.confidant.init.ItemInit;
+import com.nomad.confidant.init.Setup;
+import com.nomad.confidant.init.Register;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -36,11 +37,12 @@ public class Confidant {
 
         // Register ourselves for server and other game events we are interested in
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
-        modEventBus.addListener(this::setup);
-        ItemInit.ITEMS.register(modEventBus);
-
+        // Calling 'Setup::init' during mod setup time
+        modEventBus.addListener(Setup::init);
         MinecraftForge.EVENT_BUS.register(this);
+
+
+        Register.init();
     }
 
     private void setup(final FMLCommonSetupEvent event) {
