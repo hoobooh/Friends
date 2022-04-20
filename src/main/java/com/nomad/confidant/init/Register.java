@@ -26,11 +26,8 @@ public class Register {
         ITEMS.register(bus);
     }
     //BLOCKS
-    public static final RegistryObject<Block> TEST_BLOCK = BLOCKS.register(
-            "test_block",() -> new Block(
-                    Block.Properties.of(Material.DIRT).requiresCorrectToolForDrops().strength(10,10000).lightLevel((state) -> 3)
-            )
-    );
+    public static final RegistryObject<Block> TEST_BLOCK = BLOCKS.register("test_block",
+            () -> new Block(Block.Properties.of(Material.DIRT).requiresCorrectToolForDrops().strength(10,10000).lightLevel((state) -> 3)));
     //ITEMS
     public static final RegistryObject<Item> TEST = ITEMS.register("test",
             () -> new Item(new Item.Properties().tab(Setup.ModCreativeTab.instance)));
