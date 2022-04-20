@@ -1,5 +1,6 @@
 package com.nomad.confidant.init;
 
+import com.nomad.confidant.Confidant;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -19,6 +20,6 @@ public class Setup {
         public ItemStack makeIcon() {
             return new ItemStack(Items.BONE);
         }
-        public static final ModCreativeTab instance = new ModCreativeTab(CreativeModeTab.TABS.length, "confidant");
+        public static final ModCreativeTab instance = new ModCreativeTab(CreativeModeTab.TABS.length, Confidant.MOD_ID);
     }
 }
