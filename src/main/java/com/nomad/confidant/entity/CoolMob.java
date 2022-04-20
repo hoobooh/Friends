@@ -1,4 +1,10 @@
-package com.nomad.confidant.entity;
+/*package com.nomad.confidant.entity;
 
-public class CoolMob {
+
+import net.minecraft.world.entity.TamableAnimal;
+
+
+public class CoolMob extends TamableAnimal {
+
 }
+*/
