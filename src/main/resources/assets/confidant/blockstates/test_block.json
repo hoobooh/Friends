@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "": {
+            "model": "confidant:block/test_block"
+        }
+    }
+}

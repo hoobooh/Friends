@@ -6,6 +6,7 @@ import com.nomad.confidant.items.FuelItem;
 import com.nomad.confidant.items.TeleportStaff;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -20,10 +21,12 @@ public class Register {
     //Deferred Registry
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Confidant.MOD_ID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Confidant.MOD_ID);
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, Confidant.MOD_ID);
     public static void init(){
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         BLOCKS.register(bus);
         ITEMS.register(bus);
+        ENTITIES.register(bus);
     }
     //BLOCKS
     public static final RegistryObject<Block> TEST_BLOCK = BLOCKS.register("test_block",
@@ -32,7 +35,7 @@ public class Register {
     public static final RegistryObject<Item> TEST = ITEMS.register("test",
             () -> new Item(new Item.Properties().tab(Setup.ModCreativeTab.instance)));
     //
-    public static final RegistryObject<Item> FRUIT = ITEMS.register("chimken",
+    public static final RegistryObject<Item> CHIMKEN = ITEMS.register("chimken",
             () -> new Item(new Item.Properties().tab(Setup.ModCreativeTab.instance)
                     .food(new FoodProperties.Builder().nutrition(-2).saturationMod(20).effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 100, 2), 0.3F).build())));
     //
@@ -44,5 +47,5 @@ public class Register {
     //
     public static final RegistryObject<Item> EFFECT_STAFF = ITEMS.register("effect_staff",
             () -> new EffectStaff(new Item.Properties().tab(Setup.ModCreativeTab.instance).durability(20)));
-    //
-}
+    //ENTITIES
+    }
